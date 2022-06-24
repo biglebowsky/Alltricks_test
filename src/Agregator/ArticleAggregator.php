@@ -29,7 +29,7 @@ class ArticleAggregator
     }
 
     /**
-     * @return array
+     * @return void
      */
     public function appendDatabase(): void
     {

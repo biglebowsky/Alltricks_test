@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
  * Class ArticleNormalizer
  * @package App\Serializer
  */
-class ArticleNormalizer implements NormalizerInterface, DenormalizerInterface
+class ArticleNormalizer implements DenormalizerInterface
 {
     /**
      * @var ObjectNormalizer
@@ -34,37 +34,37 @@ class ArticleNormalizer implements NormalizerInterface, DenormalizerInterface
         $this->normalizer = $normalizer;
         $this->sourceRepository = $sourceRepository;
     }
-
-    /**
-     * @param Article $article
-     * @param string|null $format
-     * @param array $context
-     * @return array|\ArrayObject|bool|float|int|mixed|string|null
-     */
-    public function normalize($article, string $format = null, array $context = [])
-    {
-        return [
-            'id' => $article->getId(),
-            'title' => $article->getName(),
-            'content' => $article->getContent(),
-            'source' => [
-                'id' => $article->getSource()?->getId(),
-                'name' => $article->getSource()->getName(),
-                'sourceType' => $article->getSource()?->getSourceType()?->getName()
-            ],
-        ];
-    }
-
-    /**
-     * @param $data
-     * @param string|null $format
-     * @param array $context
-     * @return bool
-     */
-    public function supportsNormalization($data, string $format = null, array $context = [])
-    {
-        return $data instanceof Article;
-    }
+//
+//    /**
+//     * @param Article $article
+//     * @param string|null $format
+//     * @param array $context
+//     * @return array|\ArrayObject|bool|float|int|mixed|string|null
+//     */
+//    public function normalize($article, string $format = null, array $context = [])
+//    {
+//        return [
+//            'id' => $article->getId(),
+//            'title' => $article->getName(),
+//            'content' => $article->getContent(),
+//            'source' => [
+//                'id' => $article->getSource()?->getId(),
+//                'name' => $article->getSource()->getName(),
+//                'sourceType' => $article->getSource()?->getSourceType()?->getName()
+//            ],
+//        ];
+//    }
+//
+//    /**
+//     * @param $data
+//     * @param string|null $format
+//     * @param array $context
+//     * @return bool
+//     */
+//    public function supportsNormalization($data, string $format = null, array $context = [])
+//    {
+//        return $data instanceof Article;
+//    }
 
     /**
      * @param mixed $data
