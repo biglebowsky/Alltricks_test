@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div id="articles">
+    {% for article in articles %}
+    <div id="article">
+        <h2> {{ article.name }}</h2>
+        <em>{{ article.source.name }}</em>
+        {% if article.source.sourceType.name == 'rss' %}
+            <p><a href="{{ article.content }}">{{ article.content }}</a></p>
+        {% else %}
+            <p>{{ article.content }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
